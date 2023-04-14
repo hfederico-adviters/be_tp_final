@@ -1,4 +1,6 @@
 package com.adviters.bootcamp.TpFinal.entities;
 
-public class Licence {
+public enum Role {
+    USER,
+    SUPERVICE
 }

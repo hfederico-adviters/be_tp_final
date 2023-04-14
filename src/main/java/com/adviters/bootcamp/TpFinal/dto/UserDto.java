@@ -2,6 +2,8 @@ package com.adviters.bootcamp.TpFinal.dto;
 
 import lombok.*;
 
+import java.time.LocalDate;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -13,9 +15,8 @@ public class UserDto {
     private String firstName;
     private String lastName;
     private String password;
-    private Long idUserSupervice;
+    private Long idUser;
     private String birthday;
-    private String arriveDate;
     private String dni;
     private String cuil;
     private String email;
@@ -31,4 +32,5 @@ public class UserDto {
     private String country;
     private Integer holidays;
     private Boolean administrator;
+
 }
