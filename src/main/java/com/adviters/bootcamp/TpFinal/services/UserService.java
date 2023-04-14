@@ -32,7 +32,9 @@ public class UserService {
         if(!userRepository.existsById(id)){
             throw new UserNotFoundException(Constants.USER_NOT_FOUND + id);
         }
-        User user   = userMapper.convertToEntity(userDto);
+        User user = userRepository.findById(id).get();
+        userDto.setId(id);
+        user   = userMapper.convertToEntity(userDto);
         userRepository.save(user);
     }
 

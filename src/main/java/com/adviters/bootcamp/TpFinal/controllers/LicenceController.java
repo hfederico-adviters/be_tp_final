@@ -17,7 +17,7 @@ public class LicenceController {
     @ResponseStatus(HttpStatus.CREATED)
     public void createLicence(@RequestBody LicenceDto licenceDto){licenceService.addLicence(licenceDto);}
 
-    @PostMapping(value = "update/{id}")
+    @PutMapping (value = "update/{id}")
     @ResponseStatus(HttpStatus.OK)
     public void updateLicence(@RequestBody LicenceDto licenceDto, @PathVariable("id") Long id){
         licenceService.updateLicence(id, licenceDto);
@@ -32,7 +32,7 @@ public class LicenceController {
     @ResponseStatus(HttpStatus.OK)
     public List<LicenceDto> getAllLicence(){return licenceService.getAllLicence();}
 
-    @GetMapping(value = "delete/{id}")
+    @DeleteMapping(value = "delete/{id}")
     @ResponseStatus(HttpStatus.OK)
     public void deleteLicence(@PathVariable("id") Long id){licenceService.deleteLicence(id);}
 }
