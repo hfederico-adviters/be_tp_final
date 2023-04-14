@@ -82,6 +82,6 @@ public class User {
     @Column(name = "administrator")
     private Boolean administrator;
 
-    @OneToMany(mappedBy = "customer", targetEntity = Order.class)
-    private List<Order> orderList;
+//    @OneToMany(mappedBy = "customer", targetEntity = Order.class)
+//    private List<Order> orderList;
 }

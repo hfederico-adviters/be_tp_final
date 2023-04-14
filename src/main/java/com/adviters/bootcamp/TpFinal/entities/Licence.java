@@ -28,8 +28,8 @@ public class Licence {
 
 
 
-    @ManyToOne(targetEntity = User.class, cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "customer_id",referencedColumnName = "id")
-    private Customer customer;
+//    @ManyToOne(targetEntity = User.class, cascade = CascadeType.PERSIST)
+//    @JoinColumn(name = "customer_id",referencedColumnName = "id")
+//    private Customer customer;
 
 }
