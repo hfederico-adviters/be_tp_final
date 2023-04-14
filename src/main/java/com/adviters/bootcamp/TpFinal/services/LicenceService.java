@@ -30,7 +30,9 @@ public class LicenceService {
         if(!licenceRepository.existsById(id)){
             throw new LicenceNotFoundException(Constants.LICENCE_NOT_FOUND + id);
         }
-        Licence licence = licenceMapper.convertToEntity(licenceDto);
+        Licence licence = licenceRepository.findById(id).get();
+        licenceDto.setId(id);
+        licence = licenceMapper.convertToEntity(licenceDto);
         licenceRepository.save(licence);
     }
 
