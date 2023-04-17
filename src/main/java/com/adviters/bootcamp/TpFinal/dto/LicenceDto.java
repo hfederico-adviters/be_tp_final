@@ -1,5 +1,6 @@
 package com.adviters.bootcamp.TpFinal.dto;
 
+import com.adviters.bootcamp.TpFinal.entities.User;
 import lombok.*;
 
 @Getter
@@ -9,10 +10,10 @@ import lombok.*;
 @ToString
 public class LicenceDto {
     private Long id;
-    private Long idLicenceType;
     private String startDate;
     private String endDate;
-    private Long idUserSupervice;
     private String description;
-
+    private Long fkLicenceType;
+    private User fkUserSupervice;
+    private User fkUser;
 }

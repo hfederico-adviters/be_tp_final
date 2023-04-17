@@ -1,6 +1,10 @@
 package com.adviters.bootcamp.TpFinal.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.*;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+import org.hibernate.loader.plan.spi.EntityFetch;
 
 import javax.persistence.*;
 
@@ -23,17 +27,20 @@ public class Licence {
     @Column(name = "description")
     private String description;
 
-
-
-    @Column(name = "id_user_supervice")
-    private Long idUserSupervice;
-
+    /*
+    @ManyToOne(fetch = FetchType.LAZY, targetEntity = User.class, cascade = CascadeType.MERGE)
+    @JoinColumn(name = "fk_user_id",referencedColumnName = "id")
+    @JsonBackReference
+    private User fkUser;*/
+    @ManyToOne()
+    /*
+    @ManyToOne(fetch = FetchType.LAZY, targetEntity = User.class, cascade = CascadeType.MERGE)
+    @JoinColumn(name = "fk_user_supervice",referencedColumnName = "id")
+    @JsonBackReference
+    private User fkUserSupervice;
+    */
 
     @Column(name = "fk_licence_type")
     private Long fkLicenceType;
-
-    @ManyToOne(targetEntity = User.class, cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "fk_user_id",referencedColumnName = "id")
-    private User user;
 
 }

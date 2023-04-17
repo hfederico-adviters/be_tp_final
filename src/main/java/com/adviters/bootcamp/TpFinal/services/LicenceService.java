@@ -44,7 +44,9 @@ public class LicenceService {
         return licenceMapper.convertToDto(licence.get());
     }
     public List<LicenceDto> getAllLicence(){
+        System.out.println("BUSCANDO LAS LICENCIAS");
         List<Licence> licences = licenceRepository.findAll();
+        System.out.println("BUSQUE LAS LICENCIAS");
         return licenceMapper.ListConvertToDto(licences);
     }
     public void deleteLicence(Long id){

@@ -1,13 +1,15 @@
 package com.adviters.bootcamp.TpFinal.dto;
 
+import com.adviters.bootcamp.TpFinal.entities.Licence;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
 @AllArgsConstructor
-@NoArgsConstructor
 @ToString
 public class UserDto {
     private Long id;
@@ -15,7 +17,7 @@ public class UserDto {
     private String firstName;
     private String lastName;
     private String password;
-    private Long idUser;
+    private Long idUserSupervice;
     private String birthday;
     private String dni;
     private String cuil;
@@ -32,5 +34,12 @@ public class UserDto {
     private String country;
     private Integer holidays;
     private Boolean administrator;
+    private List<Licence> licenceList;
+    private List<Licence> licenceSuperviced;
+
+    public UserDto(){
+        this.licenceSuperviced = new ArrayList<>();
+        this.licenceList = new ArrayList<>();
+    }
 
 }

@@ -24,8 +24,8 @@ public class UserController {
     public void createUser(@RequestBody UserDto userDTO){
         userService.addUser(userDTO);
     }
-
-    //Este no estoy seguro, pero deberia hacer un update de algun usario
+    
+    //Hace un update de algun usario
     //Dependiendo la ID
     @PutMapping(value = "update/{id}")
     @ResponseStatus(HttpStatus.OK)

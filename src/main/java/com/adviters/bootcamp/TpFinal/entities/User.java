@@ -1,14 +1,19 @@
 package com.adviters.bootcamp.TpFinal.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
 @Setter
 @AllArgsConstructor
-@NoArgsConstructor
 @ToString
 @Entity(name = "UserTable")
 @Table(name = "user_table")
@@ -65,6 +70,22 @@ public class User {
     @Column(name = "available_study_days")
     private Integer availableStudyDays;
 
-    @OneToMany(mappedBy = "user", targetEntity = Licence.class)
-    private List<Licence> licenceList;
+    /*@OneToMany(mappedBy = "fkUser" , targetEntity = Licence.class, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JsonManagedReference
+    private List<Licence> licenceList;*/
+
+    @OneToMany
+    @JoinColumn(name = "fk_user", referencedColumnName = "id")
+    private List<Licence> licenceUniList;
+    /*
+    @OneToMany(mappedBy = "fkUserSupervice" , targetEntity = Licence.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JsonManagedReference
+    private List<Licence> licenSupervicedList;
+    */
+
+    public User(){
+        //this.licenSupervicedList = new ArrayList<>();
+        //this.licenceList = new ArrayList<>();
+        this.licenceUniList = new ArrayList<>();
+    }
 }
