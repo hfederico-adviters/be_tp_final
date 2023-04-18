@@ -1,8 +1,6 @@
 package com.adviters.bootcamp.TpFinal.entities;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.*;
 import lombok.*;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
@@ -14,9 +12,11 @@ import java.util.List;
 @Getter
 @Setter
 @AllArgsConstructor
+@NoArgsConstructor
 @ToString
 @Entity(name = "UserTable")
 @Table(name = "user_table")
+@JsonIdentityInfo(generator= ObjectIdGenerators.PropertyGenerator.class, property="id")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -61,8 +61,6 @@ public class User {
     private String province;
     @Column(name = "country")
     private String country;
-    @Column(name = "holidays")
-    private Integer holidays;
     @Column(name = "administrator")
     private Boolean administrator;
     @Column(name = "available_vacation_days")
@@ -75,15 +73,9 @@ public class User {
     private List<Licence> licenceList;
 
 
-/*
-    @OneToMany(mappedBy = "fkUserSupervice" , targetEntity = Licence.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JsonManagedReference
-    private List<Licence> licenSupervicedList;
-*/
 
-    public User(){
-        //this.licenSupervicedList = new ArrayList<>();
-        //this.licenceList = new ArrayList<>();
-        //this.licenceUniList = new ArrayList<>();
-    }
+    @OneToMany(mappedBy = "fkUserSupervice" , targetEntity = Licence.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    //@JsonManagedReference
+    private List<Licence> licenSupervicedList;
+
 }

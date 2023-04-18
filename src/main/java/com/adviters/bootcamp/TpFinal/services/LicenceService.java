@@ -12,13 +12,13 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 @Service
 @Log4j2
-public class LicenceService {
+public class
+LicenceService {
     private final LicenceRepository licenceRepository;
     private final LicenceMapper licenceMapper;
     private final LicenceWhitoutRelationMapper licenceWhitoutRelationMapper;
@@ -32,11 +32,8 @@ public class LicenceService {
 
     @Transactional
     public void addLicence(LicenceDto licenceDto){
-        log.info(licenceDto.toString());
+        //log.info(licenceDto.toString());
         Licence licence = licenceMapper.convertToEntity(licenceDto);
-        //Optional<User> user = userRepository.findById(licenceDto.getFkUser().getId());
-        //licence.setFkUser(user.get());
-        log.info("Step to log");
         licenceRepository.save(licence);
     }
 

@@ -14,6 +14,6 @@ public class LicenceDto {
     private String endDate;
     private String description;
     private Long fkLicenceType;
-    private UserDto fkUserSupervice;
-    private UserDto fkUser;
+    private UserBasicDto fkUserSupervice;
+    private UserBasicDto fkUser;
 }

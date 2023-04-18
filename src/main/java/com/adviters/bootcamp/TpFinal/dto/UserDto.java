@@ -3,6 +3,7 @@ package com.adviters.bootcamp.TpFinal.dto;
 import com.adviters.bootcamp.TpFinal.entities.Licence;
 import lombok.*;
 
+import javax.persistence.Column;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -32,10 +33,14 @@ public class UserDto {
     private String city;
     private String province;
     private String country;
-    private Integer holidays;
     private Boolean administrator;
+
+    private Integer  availableVacationsDays;
+    private Integer availableStudyDays;
+    private String arriveDate;
+
     private List<Licence> licenceList;
-    private List<Licence> licenceSuperviced;
+    private List<UserBasicDto> licenceSuperviced;
 
     public UserDto(){
         this.licenceSuperviced = new ArrayList<>();

@@ -1,6 +1,5 @@
 package com.adviters.bootcamp.TpFinal.dto;
 
-import com.adviters.bootcamp.TpFinal.entities.User;
 import lombok.*;
 
 @Getter
@@ -15,5 +14,5 @@ public class LicenceWhitoutRelationDto {
     private String description;
     private Long fkLicenceType;
     private Long fkUserSupervice;
-    private UserDto fkUser;
+    private UserBasicDto fkUser;
 }
