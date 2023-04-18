@@ -8,12 +8,12 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class LicenceDto {
+public class LicenceWhitoutRelationDto {
     private Long id;
     private String startDate;
     private String endDate;
     private String description;
     private Long fkLicenceType;
-    private UserDto fkUserSupervice;
+    private Long fkUserSupervice;
     private UserDto fkUser;
 }

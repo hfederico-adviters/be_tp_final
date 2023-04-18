@@ -70,22 +70,20 @@ public class User {
     @Column(name = "available_study_days")
     private Integer availableStudyDays;
 
-    /*@OneToMany(mappedBy = "fkUser" , targetEntity = Licence.class, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "fkUser" ,targetEntity = Licence.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JsonManagedReference
-    private List<Licence> licenceList;*/
+    private List<Licence> licenceList;
 
-    @OneToMany
-    @JoinColumn(name = "fk_user", referencedColumnName = "id")
-    private List<Licence> licenceUniList;
-    /*
+
+/*
     @OneToMany(mappedBy = "fkUserSupervice" , targetEntity = Licence.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JsonManagedReference
     private List<Licence> licenSupervicedList;
-    */
+*/
 
     public User(){
         //this.licenSupervicedList = new ArrayList<>();
         //this.licenceList = new ArrayList<>();
-        this.licenceUniList = new ArrayList<>();
+        //this.licenceUniList = new ArrayList<>();
     }
 }

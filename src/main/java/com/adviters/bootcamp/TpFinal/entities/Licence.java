@@ -27,18 +27,18 @@ public class Licence {
     @Column(name = "description")
     private String description;
 
-    /*
+
     @ManyToOne(fetch = FetchType.LAZY, targetEntity = User.class, cascade = CascadeType.MERGE)
     @JoinColumn(name = "fk_user_id",referencedColumnName = "id")
     @JsonBackReference
-    private User fkUser;*/
-    @ManyToOne()
+    private User fkUser;
+
     /*
     @ManyToOne(fetch = FetchType.LAZY, targetEntity = User.class, cascade = CascadeType.MERGE)
     @JoinColumn(name = "fk_user_supervice",referencedColumnName = "id")
     @JsonBackReference
-    private User fkUserSupervice;
-    */
+    private User fkUserSupervice;*/
+
 
     @Column(name = "fk_licence_type")
     private Long fkLicenceType;
