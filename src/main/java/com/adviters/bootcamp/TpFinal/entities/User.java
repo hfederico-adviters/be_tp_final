@@ -33,8 +33,6 @@ public class User {
     private Long idUserSupervice;
     @Column(name = "birthday")
     private String birthday;
-    @Column(name = "arrive_date")
-    private String arriveDate;
     @Column(name = "dni")
     private String dni;
     @Column(name = "cuil")
@@ -63,10 +61,13 @@ public class User {
     private String country;
     @Column(name = "administrator")
     private Boolean administrator;
+
     @Column(name = "available_vacation_days")
     private Integer  availableVacationsDays;
     @Column(name = "available_study_days")
     private Integer availableStudyDays;
+    @Column(name = "arrive_date")
+    private String arriveDate;
 
     @OneToMany(mappedBy = "fkUser" ,targetEntity = Licence.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JsonManagedReference

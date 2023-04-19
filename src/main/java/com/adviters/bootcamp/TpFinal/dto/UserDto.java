@@ -3,14 +3,12 @@ package com.adviters.bootcamp.TpFinal.dto;
 import com.adviters.bootcamp.TpFinal.entities.Licence;
 import lombok.*;
 
-import javax.persistence.Column;
-import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 @Getter
 @Setter
 @AllArgsConstructor
+@NoArgsConstructor
 @ToString
 public class UserDto {
     private Long id;
@@ -42,9 +40,6 @@ public class UserDto {
     private List<Licence> licenceList;
     private List<UserBasicDto> licenceSuperviced;
 
-    public UserDto(){
-        this.licenceSuperviced = new ArrayList<>();
-        this.licenceList = new ArrayList<>();
-    }
+
 
 }

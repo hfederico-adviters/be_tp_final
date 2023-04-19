@@ -57,6 +57,7 @@ LicenceService {
     @Transactional
     public List<LicenceWhitoutRelationDto> getAllLicence(){
         List<Licence> licences = licenceRepository.findAll();
+
         return licenceWhitoutRelationMapper.ListConvertToDto(licences);
     }
     public void deleteLicence(Long id){
