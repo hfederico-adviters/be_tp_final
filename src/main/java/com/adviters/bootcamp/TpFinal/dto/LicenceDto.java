@@ -1,5 +1,6 @@
 package com.adviters.bootcamp.TpFinal.dto;
 
+import com.adviters.bootcamp.TpFinal.entities.LicenceType;
 import com.adviters.bootcamp.TpFinal.entities.User;
 import lombok.*;
 
@@ -13,7 +14,7 @@ public class LicenceDto {
     private String startDate;
     private String endDate;
     private String description;
-    private Long fkLicenceType;
-    private UserBasicDto fkUserSupervice;
-    private UserBasicDto fkUser;
+    private LicenceType licenceType;
+    private User fkUserSupervice;
+    private User fkUser;
 }

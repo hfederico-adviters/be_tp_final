@@ -8,12 +8,14 @@ import com.adviters.bootcamp.TpFinal.exceptions.user.UserNotFoundException;
 import com.adviters.bootcamp.TpFinal.mappers.UserMapper;
 import com.adviters.bootcamp.TpFinal.mappers.UserWithoutRelationMapper;
 import com.adviters.bootcamp.TpFinal.reposiories.UserRepository;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 
+@Log4j2
 @Service
 public class UserService {
     private final UserRepository userRepository;
@@ -49,11 +51,9 @@ public class UserService {
         return userMapper.convertToDto(user.get());
     }
 
-    public List<UserWithoutRelationDto> getAllUser(){
-
+    public List<UserDto> getAllUser(){
         List<User> users = userRepository.findAll();
-
-        return userWithoutRelationMapper.ListConvertToDto(users);
+        return userMapper.ListConvertToDto(users);
     }
 
     public void deleteUser(Long id){

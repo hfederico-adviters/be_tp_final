@@ -1,9 +1,7 @@
 package com.adviters.bootcamp.TpFinal.dto;
 
-import com.adviters.bootcamp.TpFinal.entities.Licence;
 import lombok.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -16,9 +14,11 @@ public class UserWithoutRelationDto {
     private String image;
     private String firstName;
     private String lastName;
-    private Long idUserSupervice;
+    private List<UserBasicDto> idUserSupervice;
     private String dni;
     private String email;
     private Boolean administrator;
-    private List<LicenceWhitoutRelationDto> licenceWhitoutRelationDtoList;
+    private List<LicenceBasicDto> licenceBasicDtoList;
+    private List<UserBasicDto> userBasicDtoList;
+    private List<UserBasicDto> licenceSuperviced;
 }

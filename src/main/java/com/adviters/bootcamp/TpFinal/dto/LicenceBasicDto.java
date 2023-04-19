@@ -7,12 +7,12 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class LicenceWhitoutRelationDto {
+public class LicenceBasicDto {
     private Long id;
     private String startDate;
     private String endDate;
     private String description;
     private Long fkLicenceType;
-    private Long fkUserSupervice;
+    private UserBasicDto fkUserSupervice;
     private UserBasicDto fkUser;
 }

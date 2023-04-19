@@ -43,7 +43,7 @@ public class UserController {
     //Obtiene todos los usuarios
     @GetMapping()
     @ResponseStatus(HttpStatus.OK)
-    public List<UserWithoutRelationDto> getAllUser(){return userService.getAllUser();}
+    public List<UserDto> getAllUser(){return userService.getAllUser();}
 
     //Elimina usuario por ID
     @DeleteMapping(value = "delete/{id}")

@@ -33,19 +33,18 @@ public class Licence {
 
 
     @ManyToOne(fetch = FetchType.LAZY, targetEntity = User.class, cascade = CascadeType.MERGE)
+    @JoinColumn(name = "fk_user_supervice",referencedColumnName = "id")
+    //@JsonBackReference
+    private User fkUserSupervice;
+
+    @ManyToOne(fetch = FetchType.LAZY, targetEntity = User.class, cascade = CascadeType.MERGE)
     @JoinColumn(name = "fk_user_id",referencedColumnName = "id")
     @JsonBackReference
     private User fkUser;
 
 
-    @ManyToOne(fetch = FetchType.LAZY, targetEntity = User.class, cascade = CascadeType.MERGE)
-    @JoinColumn(name = "fk_user_supervice",referencedColumnName = "id")
-    //@JsonBackReference
-    private User fkUserSupervice;
-
     @OneToOne(fetch = FetchType.LAZY, targetEntity = LicenceType.class, cascade = CascadeType.MERGE)
     @JoinColumn(name = "fk_licence_type", referencedColumnName = "id")
     private LicenceType licenceType;
-
 
 }

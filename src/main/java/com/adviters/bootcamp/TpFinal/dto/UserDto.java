@@ -16,7 +16,6 @@ public class UserDto {
     private String firstName;
     private String lastName;
     private String password;
-    private Long idUserSupervice;
     private String birthday;
     private String dni;
     private String cuil;
@@ -32,14 +31,14 @@ public class UserDto {
     private String province;
     private String country;
     private Boolean administrator;
-
     private Integer  availableVacationsDays;
     private Integer availableStudyDays;
     private String arriveDate;
 
+    private UserBasicDto userSupervicer;
+    private List<UserBasicDto> supervicedUser;
+
     private List<Licence> licenceList;
-    private List<UserBasicDto> licenceSuperviced;
-
-
+    private List<Licence> licenceSupervicedList;
 
 }

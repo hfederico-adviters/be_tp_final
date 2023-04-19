@@ -1,7 +1,7 @@
 package com.adviters.bootcamp.TpFinal.controllers;
 
 import com.adviters.bootcamp.TpFinal.dto.LicenceDto;
-import com.adviters.bootcamp.TpFinal.dto.LicenceWhitoutRelationDto;
+import com.adviters.bootcamp.TpFinal.dto.LicenceBasicDto;
 import com.adviters.bootcamp.TpFinal.services.LicenceService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -31,7 +31,7 @@ public class LicenceController {
     }
     @GetMapping()
     @ResponseStatus(HttpStatus.OK)
-    public List<LicenceWhitoutRelationDto> getAllLicence(){return licenceService.getAllLicence();}
+    public List<LicenceBasicDto> getAllLicence(){return licenceService.getAllLicence();}
 
     @DeleteMapping(value = "delete/{id}")
     @ResponseStatus(HttpStatus.OK)
