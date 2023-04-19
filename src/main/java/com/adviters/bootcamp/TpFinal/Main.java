@@ -14,3 +14,7 @@ public class Main {
     public ModelMapper modelMapper(){return new ModelMapper();
     }
 }
+
+
+//Con Docker levante una instancia de Postgres
+//Con DataGrip cree una DB en la instancia creada con Docker
