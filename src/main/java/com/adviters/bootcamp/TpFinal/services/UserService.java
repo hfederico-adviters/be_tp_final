@@ -47,6 +47,13 @@ public class UserService {
         return userMapper.convertToDto(user.get());
     }
 
+    public List<UserDto> getSupervice(Boolean administrator){
+        User user = new User();
+        user.setAdministrator(administrator);
+        List <User> userList = userRepository.findUserByuserSupervicer(user);
+        return userMapper.ListConvertToDto(userList);
+    }
+
     public List<UserDto> getAllUser(){
         List<User> users = userRepository.findAll();
         return userMapper.ListConvertToDto(users);

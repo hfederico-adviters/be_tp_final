@@ -10,4 +10,5 @@ import java.util.List;
 public interface LicenceRepository extends JpaRepository<Licence, Long> {
     List<Licence> findLicencByfkUserSupervice(
             @Param("fkUserSupervice") User fkUserSupervice);
+
 }

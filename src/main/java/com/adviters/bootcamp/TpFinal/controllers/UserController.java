@@ -1,20 +1,14 @@
 package com.adviters.bootcamp.TpFinal.controllers;
-
 import com.adviters.bootcamp.TpFinal.dto.UserCredentialDto;
 import com.adviters.bootcamp.TpFinal.dto.UserDto;
-
-import com.adviters.bootcamp.TpFinal.dto.UserWithoutRelationDto;
 import com.adviters.bootcamp.TpFinal.entities.User;
 import com.adviters.bootcamp.TpFinal.exceptions.user.UserNotFoundException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.adviters.bootcamp.TpFinal.services.UserService;
-
-import javax.xml.crypto.dsig.Transform;
 import java.io.UnsupportedEncodingException;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
@@ -52,6 +46,11 @@ public class UserController {
         return userService.getUser(id);
     }
 
+    @GetMapping(value = "supervicer/{administrator}")
+    @ResponseStatus(HttpStatus.OK)
+    public List<UserDto> getSupervice(@PathVariable("administrator") Boolean administrator){
+        return userService.getSupervice(administrator);
+    }
     //Obtiene todos los usuarios
     @GetMapping()
     @ResponseStatus(HttpStatus.OK)

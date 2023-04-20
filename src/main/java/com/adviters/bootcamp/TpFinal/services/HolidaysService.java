@@ -1,19 +1,10 @@
 package com.adviters.bootcamp.TpFinal.services;
-
 import com.adviters.bootcamp.TpFinal.constants.Constants;
 import com.adviters.bootcamp.TpFinal.dto.HolidaysDto;
-import com.adviters.bootcamp.TpFinal.dto.LicenceDto;
-import com.adviters.bootcamp.TpFinal.dto.UserDto;
-import com.adviters.bootcamp.TpFinal.dto.UserWithoutRelationDto;
 import com.adviters.bootcamp.TpFinal.entities.Holidays;
-import com.adviters.bootcamp.TpFinal.entities.Licence;
-import com.adviters.bootcamp.TpFinal.entities.User;
 import com.adviters.bootcamp.TpFinal.exceptions.user.UserNotFoundException;
 import com.adviters.bootcamp.TpFinal.mappers.HolidaysMapper;
-import com.adviters.bootcamp.TpFinal.mappers.UserMapper;
-import com.adviters.bootcamp.TpFinal.mappers.UserWithoutRelationMapper;
 import com.adviters.bootcamp.TpFinal.reposiories.HolidaysRepository;
-import com.adviters.bootcamp.TpFinal.reposiories.UserRepository;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
