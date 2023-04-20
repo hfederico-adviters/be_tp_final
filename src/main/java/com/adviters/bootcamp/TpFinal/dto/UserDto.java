@@ -1,8 +1,10 @@
 package com.adviters.bootcamp.TpFinal.dto;
 
 import com.adviters.bootcamp.TpFinal.entities.Licence;
+import com.adviters.bootcamp.TpFinal.mappers.LicenceWhitoutRelationMapper;
 import lombok.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -38,7 +40,7 @@ public class UserDto {
     private UserBasicDto userSupervicer;
     private List<UserBasicDto> supervicedUser;
 
-    private List<Licence> licenceList;
-    private List<Licence> licenceSupervicedList;
+    private List<LicenceWithoutRelaiton> licenceList;
+    private List<LicenceWithoutRelaiton> licenceSupervicedList;
 
 }
