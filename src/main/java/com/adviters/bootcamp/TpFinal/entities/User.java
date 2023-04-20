@@ -1,5 +1,6 @@
 package com.adviters.bootcamp.TpFinal.entities;
 
+import com.adviters.bootcamp.TpFinal.dto.UserBasicDto;
 import com.fasterxml.jackson.annotation.*;
 import lombok.*;
 import org.hibernate.annotations.Fetch;
@@ -29,8 +30,7 @@ public class User {
     private String lastName;
     @Column(name = "password")
     private String password;
-    @Column(name = "fk_user_supervice")
-    private Long idUserSupervice;
+
     @Column(name = "birthday")
     private String birthday;
     @Column(name = "dni")
@@ -63,20 +63,27 @@ public class User {
     private Boolean administrator;
 
     @Column(name = "available_vacation_days")
-    private Integer  availableVacationsDays;
+    private Integer availableVacationsDays;
     @Column(name = "available_study_days")
     private Integer availableStudyDays;
     @Column(name = "arrive_date")
     private String arriveDate;
 
-    @OneToMany(mappedBy = "fkUser" ,targetEntity = Licence.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JsonManagedReference
+
+    @ManyToOne(fetch = FetchType.LAZY, targetEntity = User.class)
+    @JoinColumn(name = "fk_user_supervice_id",referencedColumnName ="id")
+    private User userSupervicer;
+
+    @OneToMany (mappedBy = "userSupervicer", targetEntity = User.class, fetch = FetchType.LAZY)
+    private List<User> supervicedUserList;
+
+
+    @OneToMany(mappedBy = "fkUser" , targetEntity = Licence.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    //@JsonManagedReference
     private List<Licence> licenceList;
-
-
 
     @OneToMany(mappedBy = "fkUserSupervice" , targetEntity = Licence.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     //@JsonManagedReference
-    private List<Licence> licenSupervicedList;
+    private List<Licence> licenceSupervicedList;
 
 }

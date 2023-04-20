@@ -12,7 +12,7 @@ public class UserBasicDto {
     private String image;
     private String firstName;
     private String lastName;
-    private Long idUserSupervice;
+    //private UserBasicDto idUserSupervice;
     private String dni;
     private String email;
     private Boolean administrator;
