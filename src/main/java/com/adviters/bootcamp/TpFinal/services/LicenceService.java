@@ -2,7 +2,9 @@ package com.adviters.bootcamp.TpFinal.services;
 
 import com.adviters.bootcamp.TpFinal.constants.Constants;
 import com.adviters.bootcamp.TpFinal.dto.LicenceDto;
+import com.adviters.bootcamp.TpFinal.dto.UserDto;
 import com.adviters.bootcamp.TpFinal.entities.Licence;
+import com.adviters.bootcamp.TpFinal.entities.User;
 import com.adviters.bootcamp.TpFinal.exceptions.user.LicenceNotFoundException;
 import com.adviters.bootcamp.TpFinal.mappers.LicenceMapper;
 import com.adviters.bootcamp.TpFinal.mappers.LicenceWhitoutRelationMapper;
@@ -53,6 +55,12 @@ LicenceService {
             throw new LicenceNotFoundException(Constants.LICENCE_NOT_FOUND + id);
         }
         return licenceMapper.convertToDto(licence.get());
+    }
+    public List<LicenceDto>  getLicenceBySupervicer(Long id){
+        User user = new User();
+        user.setId(id);
+        List<Licence> licences = licenceRepository.findLicencByfkUserSupervice(user);
+        return licenceWhitoutRelationMapper.ListConvertToDto(licences);
     }
     @Transactional
     public List<LicenceDto> getAllLicence(){

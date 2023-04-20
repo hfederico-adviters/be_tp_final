@@ -70,11 +70,11 @@ public class User {
     private String arriveDate;
 
 
-    @ManyToOne(fetch = FetchType.LAZY, targetEntity = User.class, cascade = CascadeType.MERGE)
+    @ManyToOne(fetch = FetchType.LAZY, targetEntity = User.class)
     @JoinColumn(name = "fk_user_supervice_id",referencedColumnName ="id")
     private User userSupervicer;
 
-    @OneToMany (mappedBy = "userSupervicer", targetEntity = User.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany (mappedBy = "userSupervicer", targetEntity = User.class, fetch = FetchType.LAZY)
     private List<User> supervicedUserList;
 
 

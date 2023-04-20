@@ -1,7 +1,6 @@
 package com.adviters.bootcamp.TpFinal.dto;
 
 import com.adviters.bootcamp.TpFinal.entities.Licence;
-import com.adviters.bootcamp.TpFinal.mappers.LicenceWhitoutRelationMapper;
 import lombok.*;
 
 import java.util.ArrayList;

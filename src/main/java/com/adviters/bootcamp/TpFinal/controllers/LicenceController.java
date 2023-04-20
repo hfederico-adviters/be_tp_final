@@ -9,30 +9,46 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@Log4j2
 @RequestMapping(path = "api/v1/licence/")
 public class LicenceController {
     private final LicenceService licenceService;
-    public LicenceController(LicenceService licenceService){this.licenceService = licenceService;}
+
+    public LicenceController(LicenceService licenceService) {
+        this.licenceService = licenceService;
+    }
 
     @PostMapping(value = "add")
     @ResponseStatus(HttpStatus.CREATED)
-    public void createLicence(@RequestBody LicenceDto licenceDto){
-        licenceService.addLicence(licenceDto);}
+    public void createLicence(@RequestBody LicenceDto licenceDto) {
+        log.info(licenceDto.getLicenceStatus().toString());
+        licenceService.addLicence(licenceDto);
+    }
 
-    @PutMapping (value = "update/{id}")
+    @PutMapping(value = "update/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public void updateLicence(@RequestBody LicenceDto licenceDto, @PathVariable("id") Long id){
+    public void updateLicence(@RequestBody LicenceDto licenceDto, @PathVariable("id") Long id) {
         licenceService.updateLicence(id, licenceDto);
+    }
+
+    @GetMapping(value = "/licenceBySupervice/{idSupervicer}")
+    @ResponseStatus(HttpStatus.OK)
+    public List<LicenceDto> getAllLicenceBySupervicer(@PathVariable("idSupervicer") Long idSupervicer){
+        return licenceService.getLicenceBySupervicer(idSupervicer);
     }
 
     @GetMapping(value = "{id}")
     @ResponseStatus(HttpStatus.OK)
-    public LicenceDto getLicence(@PathVariable("id") Long id){
+    public LicenceDto getLicence(@PathVariable("id") Long id) {
         return licenceService.getLicence(id);
     }
+
     @GetMapping()
     @ResponseStatus(HttpStatus.OK)
-    public List<LicenceDto> getAllLicence(){return licenceService.getAllLicence();}
+    public List<LicenceDto> getAllLicence() {
+        return licenceService.getAllLicence();
+    }
+
 
     @DeleteMapping(value = "delete/{id}")
     @ResponseStatus(HttpStatus.OK)
