@@ -1,8 +1,8 @@
 package com.adviters.bootcamp.TpFinal.controllers;
 
 import com.adviters.bootcamp.TpFinal.dto.LicenceDto;
-import com.adviters.bootcamp.TpFinal.dto.LicenceBasicDto;
 import com.adviters.bootcamp.TpFinal.services.LicenceService;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,7 +16,8 @@ public class LicenceController {
 
     @PostMapping(value = "add")
     @ResponseStatus(HttpStatus.CREATED)
-    public void createLicence(@RequestBody LicenceDto licenceDto){licenceService.addLicence(licenceDto);}
+    public void createLicence(@RequestBody LicenceDto licenceDto){
+        licenceService.addLicence(licenceDto);}
 
     @PutMapping (value = "update/{id}")
     @ResponseStatus(HttpStatus.OK)
@@ -31,7 +32,7 @@ public class LicenceController {
     }
     @GetMapping()
     @ResponseStatus(HttpStatus.OK)
-    public List<LicenceBasicDto> getAllLicence(){return licenceService.getAllLicence();}
+    public List<LicenceDto> getAllLicence(){return licenceService.getAllLicence();}
 
     @DeleteMapping(value = "delete/{id}")
     @ResponseStatus(HttpStatus.OK)

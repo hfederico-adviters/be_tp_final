@@ -77,10 +77,6 @@ public class User {
     @OneToMany (mappedBy = "userSupervicer", targetEntity = User.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<User> supervicedUserList;
 
-    /*
-    @OneToMany(mappedBy = "fkUserSupervice", targetEntity = Licence.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JsonManagedReference
-    private List<Licence> licenceSupervicedByUserList;*/
 
     @OneToMany(mappedBy = "fkUser" , targetEntity = Licence.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     //@JsonManagedReference

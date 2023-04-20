@@ -11,4 +11,5 @@ public class LicenceWithoutRelaiton {private Long id;
     private String startDate;
     private String endDate;
     private String description;
+    private LicenceTypeDto licenceType;
 }

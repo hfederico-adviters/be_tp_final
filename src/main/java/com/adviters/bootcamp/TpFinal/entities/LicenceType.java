@@ -20,4 +20,5 @@ public class LicenceType {
     private Long id;
     @Column(name = "description")
     private String description;
+
 }
