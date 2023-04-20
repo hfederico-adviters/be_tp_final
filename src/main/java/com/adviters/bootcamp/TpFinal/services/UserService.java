@@ -2,28 +2,26 @@ package com.adviters.bootcamp.TpFinal.services;
 
 import com.adviters.bootcamp.TpFinal.constants.Constants;
 import com.adviters.bootcamp.TpFinal.dto.UserDto;
-import com.adviters.bootcamp.TpFinal.dto.UserWithoutRelationDto;
 import com.adviters.bootcamp.TpFinal.entities.User;
 import com.adviters.bootcamp.TpFinal.exceptions.user.UserNotFoundException;
 import com.adviters.bootcamp.TpFinal.mappers.UserMapper;
-import com.adviters.bootcamp.TpFinal.mappers.UserWithoutRelationMapper;
 import com.adviters.bootcamp.TpFinal.reposiories.UserRepository;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 
+@Log4j2
 @Service
 public class UserService {
     private final UserRepository userRepository;
     private final UserMapper userMapper;
-    private final UserWithoutRelationMapper userWithoutRelationMapper;
 
-    public UserService(UserRepository userRepository, UserMapper userMapper, UserWithoutRelationMapper userWithoutRelationMapper){
+    public UserService(UserRepository userRepository, UserMapper userMapper){
         this.userMapper = userMapper;
         this.userRepository = userRepository;
-        this.userWithoutRelationMapper = userWithoutRelationMapper;
     }
 
     public void addUser(UserDto userDto){
@@ -49,11 +47,9 @@ public class UserService {
         return userMapper.convertToDto(user.get());
     }
 
-    public List<UserWithoutRelationDto> getAllUser(){
-
+    public List<UserDto> getAllUser(){
         List<User> users = userRepository.findAll();
-
-        return userWithoutRelationMapper.ListConvertToDto(users);
+        return userMapper.ListConvertToDto(users);
     }
 
     public void deleteUser(Long id){

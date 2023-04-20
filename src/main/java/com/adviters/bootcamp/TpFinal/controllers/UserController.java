@@ -2,11 +2,13 @@ package com.adviters.bootcamp.TpFinal.controllers;
 
 import com.adviters.bootcamp.TpFinal.dto.UserCredentialDto;
 import com.adviters.bootcamp.TpFinal.dto.UserDto;
+
 import com.adviters.bootcamp.TpFinal.dto.UserWithoutRelationDto;
 import com.adviters.bootcamp.TpFinal.entities.User;
 import com.adviters.bootcamp.TpFinal.exceptions.user.UserNotFoundException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -53,7 +55,7 @@ public class UserController {
     //Obtiene todos los usuarios
     @GetMapping()
     @ResponseStatus(HttpStatus.OK)
-    public List<UserWithoutRelationDto> getAllUser(){return userService.getAllUser();}
+    public List<UserDto> getAllUser(){return userService.getAllUser();}
 
     //Elimina usuario por ID
     @DeleteMapping(value = "delete/{id}")
