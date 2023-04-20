@@ -1,11 +1,24 @@
 package com.adviters.bootcamp.TpFinal.controllers;
 
+import com.adviters.bootcamp.TpFinal.dto.UserCredentialDto;
 import com.adviters.bootcamp.TpFinal.dto.UserDto;
+
+import com.adviters.bootcamp.TpFinal.dto.UserWithoutRelationDto;
+import com.adviters.bootcamp.TpFinal.entities.User;
+import com.adviters.bootcamp.TpFinal.exceptions.user.UserNotFoundException;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
+
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.adviters.bootcamp.TpFinal.services.UserService;
 
-import java.util.List;
+import javax.xml.crypto.dsig.Transform;
+import java.io.UnsupportedEncodingException;
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
+import java.util.*;
 
 @RestController
 @RequestMapping(path = "api/v1/user/")
@@ -49,5 +62,40 @@ public class UserController {
     @ResponseStatus(HttpStatus.OK)
     public void deleteUser(@PathVariable("id") Long id){
         userService.deleteUser(id);
+    }
+
+    //Login de usuario
+    @PostMapping(value ="login")
+    @ResponseStatus(HttpStatus.OK)
+
+    public ResponseEntity<String> loginUser(@RequestBody UserCredentialDto userCredentialDto){
+//        return Collections.singletonMap("token", userCredentialDto.toString());
+        try {
+            if(userCredentialDto.getEmail() == null || userCredentialDto.getPassword() == null) {
+                throw new UserNotFoundException("User or Password is Empty");
+            }
+            User userData = userService.getUserByEmailAndPassword(userCredentialDto.getEmail(), userCredentialDto.getPassword());
+            if(userData == null){
+                throw new UserNotFoundException("UserName or Password is Invalid");
+            }
+            Instant now = Instant.now();
+            String jwt = Jwts.builder()
+                    .setIssuer("Tp_final")
+                    .setSubject("guccigang")
+                    .claim("name", userData.getEmail())
+                    .claim("scope", userData.getAdministrator() ? "administrator" : "user")
+                    .setIssuedAt(Date.from(now))
+                    .setExpiration(Date.from(now.plus(30, ChronoUnit.DAYS)))
+                    .signWith(
+                            SignatureAlgorithm.HS256,
+                            "Yn2kjibddFAWtnPJ2AFlL8WXmohJMCvigQggaEypa5E=".getBytes("UTF-8")
+                    )
+                    .compact();
+            return new ResponseEntity<>(jwt, HttpStatus.OK);
+        } catch (UserNotFoundException e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.CONFLICT);
+        } catch (UnsupportedEncodingException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
