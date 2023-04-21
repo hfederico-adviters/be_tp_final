@@ -5,6 +5,7 @@ import com.adviters.bootcamp.TpFinal.entities.User;
 import com.adviters.bootcamp.TpFinal.exceptions.user.UserNotFoundException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +17,7 @@ import java.util.*;
 
 @RestController
 @RequestMapping(path = "api/v1/user/")
+@Log4j2
 public class UserController {
 
     private final UserService userService;
@@ -49,6 +51,8 @@ public class UserController {
     @GetMapping(value = "supervicer/{administrator}")
     @ResponseStatus(HttpStatus.OK)
     public List<UserDto> getSupervice(@PathVariable("administrator") Boolean administrator){
+        log.info(administrator);
+        log.info(administrator.getClass());
         return userService.getSupervice(administrator);
     }
     //Obtiene todos los usuarios
@@ -63,6 +67,7 @@ public class UserController {
         userService.deleteUser(id);
     }
 
+/*
     //Login de usuario
     @PostMapping(value ="login")
     @ResponseStatus(HttpStatus.OK)
@@ -96,5 +101,5 @@ public class UserController {
         } catch (UnsupportedEncodingException e) {
             throw new RuntimeException(e);
         }
-    }
+    }*/
 }

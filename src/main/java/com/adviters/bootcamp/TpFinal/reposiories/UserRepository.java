@@ -13,7 +13,4 @@ public interface UserRepository extends JpaRepository<User, Long> {
             @Param("administrator") Boolean administrator
     );
 
-    List<User> findUserByuserSupervicer(
-            @Param("userSupervicer") User userSupervicer
-    );
 }

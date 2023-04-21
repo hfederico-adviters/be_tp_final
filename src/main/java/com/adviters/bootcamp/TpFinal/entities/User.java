@@ -82,7 +82,7 @@ public class User {
     //@JsonManagedReference
     private List<Licence> licenceList;
 
-    @OneToMany(mappedBy = "fkUserSupervice" , targetEntity = Licence.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "fkUserSupervice" , targetEntity = Licence.class, fetch = FetchType.LAZY)
     //@JsonManagedReference
     private List<Licence> licenceSupervicedList;
 
