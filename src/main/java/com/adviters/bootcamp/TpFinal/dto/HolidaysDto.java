@@ -2,6 +2,8 @@ package com.adviters.bootcamp.TpFinal.dto;
 
 import lombok.*;
 
+import java.time.LocalDate;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -10,7 +12,7 @@ import lombok.*;
 
 public class HolidaysDto {
     private Long id;
-    private String dateHoliday;
+    private LocalDate date;
     private String description;
 }
 
