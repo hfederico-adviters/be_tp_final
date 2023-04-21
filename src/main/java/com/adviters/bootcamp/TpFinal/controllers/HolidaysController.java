@@ -21,7 +21,7 @@ public class HolidaysController {
     }
 
     //Crea feriado
-    @PostMapping(value = "/add")
+    @PostMapping()
     @ResponseStatus(HttpStatus.CREATED)
     public void createHolidays(@RequestBody HolidaysDto holidaysDTO){
         holidaysService.addHolidays(holidaysDTO);

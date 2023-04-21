@@ -20,7 +20,6 @@ import java.util.Optional;
 
 @Service
 @Log4j2
-//
 public class LicenceService {
     private final LicenceRepository licenceRepository;
     private final LicenceMapper licenceMapper;
