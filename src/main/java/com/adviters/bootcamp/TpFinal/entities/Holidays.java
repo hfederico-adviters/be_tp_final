@@ -5,8 +5,9 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.*;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 
-    @Getter
+@Getter
     @Setter
     @AllArgsConstructor
     @NoArgsConstructor
@@ -19,7 +20,7 @@ import javax.persistence.*;
         private Long id;
 
         @Column(name = "dateHolidays")
-        private String dateHolidays;
+        private LocalDate dateHolidays;
         @Column(name = "description")
         private String description;
 }

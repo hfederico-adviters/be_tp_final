@@ -20,7 +20,7 @@ public class HolidaysController {
     }
 
     //Crea feriados
-    @PostMapping(value ="add")
+    @PostMapping()
     @ResponseStatus(HttpStatus.CREATED)
     public void createUser(@RequestBody HolidaysDto holidaysDTO){
         holidaysService.addHolidays(holidaysDTO);
