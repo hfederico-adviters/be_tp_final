@@ -9,10 +9,10 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-
+//DTO para el manejo de los feriados.
 public class HolidaysDto {
     private Long id;
-    private LocalDate date;
+    private String date;
     private String description;
 }
 

@@ -14,6 +14,7 @@ import javax.persistence.*;
 @ToString
 @Entity(name = "LicenceTypeTable")
 @Table(name = "licence_type_table")
+//Entidad para el manejo tipos de licencias.
 public class LicenceType {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

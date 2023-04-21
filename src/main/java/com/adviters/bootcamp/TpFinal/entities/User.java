@@ -18,6 +18,7 @@ import java.util.List;
 @Entity(name = "UserTable")
 @Table(name = "user_table")
 @JsonIdentityInfo(generator= ObjectIdGenerators.PropertyGenerator.class, property="id")
+//Entidad para el manejo de usuarios.
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,7 +31,6 @@ public class User {
     private String lastName;
     @Column(name = "password")
     private String password;
-
     @Column(name = "birthday")
     private String birthday;
     @Column(name = "dni")
@@ -61,29 +61,23 @@ public class User {
     private String country;
     @Column(name = "administrator")
     private Boolean administrator;
-
     @Column(name = "available_vacation_days")
     private Integer availableVacationsDays;
     @Column(name = "available_study_days")
     private Integer availableStudyDays;
     @Column(name = "arrive_date")
     private String arriveDate;
-
-
+    //Join a mismo user para setear quien es el supervisor. Haciendo un join MUCHOS a UNO.
     @ManyToOne(fetch = FetchType.LAZY, targetEntity = User.class)
     @JoinColumn(name = "fk_user_supervice_id",referencedColumnName ="id")
     private User userSupervicer;
-
+    //Join a mismo user para saber quien es el supervisor. Haciendo un join UNO a MUCHOS.
     @OneToMany (mappedBy = "userSupervicer", targetEntity = User.class, fetch = FetchType.LAZY)
     private List<User> supervicedUserList;
-
-
+    //Join a licencia, para obtener todas las licencias que pertenece al usario. Haciendo un join UNO a MUCHOS.
     @OneToMany(mappedBy = "fkUser" , targetEntity = Licence.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    //@JsonManagedReference
     private List<Licence> licenceList;
-
+    //Join a licencia, para obtener todas las licencias que administra el usuario. Haciendo un join UNO a MUCHOS.
     @OneToMany(mappedBy = "fkUserSupervice" , targetEntity = Licence.class, fetch = FetchType.LAZY)
-    //@JsonManagedReference
     private List<Licence> licenceSupervicedList;
-
 }

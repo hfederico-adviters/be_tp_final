@@ -7,14 +7,13 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
+//DTO con campos basicos y necesarios del usuario.
 public class UserBasicDto {
     private Long id;
     private String image;
     private String firstName;
     private String lastName;
-    //private UserBasicDto idUserSupervice;
     private String dni;
     private String email;
     private Boolean administrator;
-    //private UserBasicDto licenceSuperviced;
 }

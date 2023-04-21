@@ -11,6 +11,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
+//DTO para el manejo de usuarios.
 public class UserDto {
     private Long id;
     private String image;
@@ -35,10 +36,8 @@ public class UserDto {
     private Integer  availableVacationsDays;
     private Integer availableStudyDays;
     private String arriveDate;
-
     private UserBasicDto userSupervicer;
     private List<UserBasicDto> supervicedUser;
-
     private List<LicenceWithoutRelaiton> licenceList;
     private List<LicenceWithoutRelaiton> licenceSupervicedList;
 

@@ -7,6 +7,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
+//DTO para el manejo de credenciales.
 public class UserCredentialDto {
     private String password;
     private String email;

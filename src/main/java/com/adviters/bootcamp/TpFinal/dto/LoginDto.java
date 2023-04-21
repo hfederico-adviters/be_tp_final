@@ -7,6 +7,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
+//DTO para el manejo del Login.
 public class LoginDto {
     private String token;
     private UserBasicDto user;

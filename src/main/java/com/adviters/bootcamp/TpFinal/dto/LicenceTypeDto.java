@@ -7,6 +7,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
+//DTO para el manejo de tipos de licencias.
 public class LicenceTypeDto {
     private Long id;
     private String description;

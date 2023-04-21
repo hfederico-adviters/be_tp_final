@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+//Controllador de los feriados.
 @RestController
 @RequestMapping(path = "api/v1/holidays/")
 public class HolidaysController {
@@ -19,11 +20,18 @@ public class HolidaysController {
         this.holidaysService = holidaysService;
     }
 
-    //Crea feriados
-    @PostMapping()
+    //Crea feriado
+    @PostMapping(value = "/add")
     @ResponseStatus(HttpStatus.CREATED)
-    public void createUser(@RequestBody HolidaysDto holidaysDTO){
+    public void createHolidays(@RequestBody HolidaysDto holidaysDTO){
         holidaysService.addHolidays(holidaysDTO);
+    }
+
+    //Agrega varios feriados, mandando un lista del mismo.
+    @PostMapping("/add/many")
+    @ResponseStatus(HttpStatus.CREATED)
+    public void createManyHolidays(@RequestBody List<HolidaysDto> holidaysDtoList){
+        holidaysService.addAllHolidays(holidaysDtoList);
     }
 
 

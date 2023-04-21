@@ -11,6 +11,7 @@ import javax.persistence.*;
 @ToString
 @Entity(name = "LicenceStatusTable")
 @Table(name = "licence_status_table")
+//Entidad donde se maneja los tipos de status de licencias.
 public class LicenceStatus {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

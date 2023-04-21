@@ -50,6 +50,7 @@ public class UserController {
         return userService.getUser(id);
     }
 
+    //Obtiene un listado de usuarios que sean administradores.
     @GetMapping(value = "supervicer/{administrator}")
     @ResponseStatus(HttpStatus.OK)
     public List<UserDto> getSupervice(@PathVariable("administrator") Boolean administrator){
@@ -69,13 +70,11 @@ public class UserController {
         userService.deleteUser(id);
     }
 
-/*
+
     //Login de usuario
     @PostMapping(value ="login")
     @ResponseStatus(HttpStatus.OK)
-
     public ResponseEntity<Object> loginUser(@RequestBody UserCredentialDto userCredentialDto){
-//        return Collections.singletonMap("token", userCredentialDto.toString());
         try {
             if(userCredentialDto.getEmail() == null || userCredentialDto.getPassword() == null) {
                 throw new UserNotFoundException("User or Password is Empty");
@@ -103,5 +102,5 @@ public class UserController {
         } catch (UnsupportedEncodingException e) {
             throw new RuntimeException(e);
         }
-    }*/
+    }
 }
