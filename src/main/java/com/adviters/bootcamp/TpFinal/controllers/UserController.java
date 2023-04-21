@@ -1,4 +1,6 @@
 package com.adviters.bootcamp.TpFinal.controllers;
+import com.adviters.bootcamp.TpFinal.dto.LoginDto;
+import com.adviters.bootcamp.TpFinal.dto.UserBasicDto;
 import com.adviters.bootcamp.TpFinal.dto.UserCredentialDto;
 import com.adviters.bootcamp.TpFinal.dto.UserDto;
 import com.adviters.bootcamp.TpFinal.entities.User;
@@ -72,7 +74,7 @@ public class UserController {
     @PostMapping(value ="login")
     @ResponseStatus(HttpStatus.OK)
 
-    public ResponseEntity<String> loginUser(@RequestBody UserCredentialDto userCredentialDto){
+    public ResponseEntity<Object> loginUser(@RequestBody UserCredentialDto userCredentialDto){
 //        return Collections.singletonMap("token", userCredentialDto.toString());
         try {
             if(userCredentialDto.getEmail() == null || userCredentialDto.getPassword() == null) {
@@ -95,7 +97,7 @@ public class UserController {
                             "Yn2kjibddFAWtnPJ2AFlL8WXmohJMCvigQggaEypa5E=".getBytes("UTF-8")
                     )
                     .compact();
-            return new ResponseEntity<>(jwt, HttpStatus.OK);
+            return new ResponseEntity<>(new LoginDto(jwt,new UserBasicDto(userData.getId(), userData.getImage(), userData.getFirstName(), userData.getLastName(), userData.getDni(), userData.getEmail(), userData.getAdministrator())), HttpStatus.OK);
         } catch (UserNotFoundException e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.CONFLICT);
         } catch (UnsupportedEncodingException e) {
